@@ -1,24 +1,46 @@
-import logo from './logo.svg';
+
 import './App.css';
+import Home from './Component/Home';
+import { createTheme } from '@mui/material';
+import { ThemeProvider } from '@emotion/react';
+import { DataProvider } from './Datacontext';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Feed from "./Component/Feed";
+import PrimarySearchAppBar from "./Component/Search";
+import Data from './Component/Data';
+
+const theme = createTheme({
+  palette: {
+    type: 'light',
+    primary: {
+      main: '#d2d4de',
+      contrastText: '#1a237e',
+    },
+    secondary: {
+      main: '#f50057',
+    },
+    text: {
+      primary: '#000000',
+      secondary: '#3949ab',
+    },
+    background: {
+      default: '#fafafa',
+    },
+  },
+});
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+    <DataProvider>
+    <BrowserRouter>
+    <Routes>
+      <Route path="/data" element={<Data />} />
+      <Route path="/home" element={<Home  />} />
+    </Routes>
+    </BrowserRouter>
+    </DataProvider>
+    </ThemeProvider>
   );
 }
 
