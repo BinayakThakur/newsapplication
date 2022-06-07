@@ -35,8 +35,8 @@ function App() {
     <DataProvider>
     <BrowserRouter>
     <Routes>
-      <Route path="/data" element={<Data />} />
-      <Route path="/home" element={<Home  />} />
+      <Route path="/newsapplication/home" element={<Data />} />
+      <Route path="/newsapplication" element={<Home  />} />
     </Routes>
     </BrowserRouter>
     </DataProvider>

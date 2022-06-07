@@ -98,7 +98,7 @@ export default function SearchAppBar(props) {
             aria-label="menu"
             sx={{ mr: 2 }}
           >
-          <Link to="/data">
+          <Link to="/newsapplication/home">
            <AccountCircle/></Link>
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>

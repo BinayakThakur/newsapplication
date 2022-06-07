@@ -1,11 +1,14 @@
 import { Button, Grid, Toolbar } from '@mui/material';
 import * as React from 'react';
+import { DataContext } from '../Datacontext';
 import CheckboxAuthors from './Author';
 import CheckboxLabels from './Tech';
 
 export default function CustomizedAccordions() {
+ const{articles}=React.useContext(DataContext);
  var menu = []
  const [checked, setChecked] = React.useState([]);
+ 
  function setMenu(e){
     console.log(e);
     if(e.target.name=="tech"){

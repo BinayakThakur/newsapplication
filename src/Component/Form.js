@@ -91,7 +91,7 @@ export default function Form(props) {
             aria-label="menu"
             sx={{ mr: 2 }}
           >
-          <Link to="/home">  <ArrowBackIcon/> </Link>
+          <Link to="/newsapplication">  <ArrowBackIcon/> </Link>
           </IconButton>
           <Box
             display="flex"

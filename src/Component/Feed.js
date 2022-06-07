@@ -7,6 +7,7 @@ import ComplexGrid from "./NewsCard";
 const Feed = () => {
     const { articles } = useContext(DataContext);
     var feed=[];
+    
     if(articles!=undefined){
         articles.map(article => {
             feed.push(

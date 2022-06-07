@@ -8,27 +8,28 @@ export const DataProvider = provider => {
   const[search,setSearch]=useState("India");
   const[loading,setLoading]=useState([]);
   const[filter,setFilter]=useState(false);
+  const[criteria,setCriteria]=useState("");
   useEffect(() => {
     const options = {
-        method: 'GET',
-        url: 'https://free-news.p.rapidapi.com/v1/search',
-        params: {q: "adorable", lang: 'en'},
-        headers: {
-          'X-RapidAPI-Host': 'free-news.p.rapidapi.com',
-          'X-RapidAPI-Key': 'db123ddc63msh47176205146b614p158fe8jsn44902bef6a83'
-        }
-      };
+      method: "GET",
+      url: `https://cors-layer-library.herokuapp.com/khabar-backend.herokuapp.com/MostRecentArticles`,
+      Headers: {
+        "Content-Type": "application/json"
+      }
+    };
+
       
       axios.request(options).then(function (response) {
-            setArticles(response.data.articles);
-            setLoading(response.data.articles);
+            console.log(response.data);
+            setArticles(response.data);
+            setLoading(response.data);
       }).catch(function (error) {
           console.error(error);
       });
     }, []);
     
   return (
-    <DataContext.Provider value={{articles,setSearch,setArticles,loading,filter,setFilter}}>
+    <DataContext.Provider value={{articles,setSearch,setArticles,loading,filter,setFilter,criteria,setCriteria}}>
       {provider.children}
     </DataContext.Provider>
   );

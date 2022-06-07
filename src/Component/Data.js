@@ -1,5 +1,6 @@
-import {ToggleButtonGroup,Box,Switch,Input,InputAdornment,FormGroup,Checkbox,MenuItem,Select,NativeSelect,InputLabel, Avatar, Container, FormControl, FormLabel,FormControlLabel, RadioGroup ,Radio,ToggleButton, TextField ,Toolbar, Button, Typography, Autocomplete, OutlinedInput} from "@mui/material";
+import {ToggleButtonGroup,Box,Switch,Input,InputAdornment,FormGroup,Checkbox,MenuItem,Select,NativeSelect,InputLabel, Avatar, Container, FormControl, FormLabel,FormControlLabel, RadioGroup ,Radio,ToggleButton, TextField ,Toolbar, Button, Typography, Autocomplete, OutlinedInput, Backdrop, CircularProgress} from "@mui/material";
 import Form from "./Form";
+import axios from "axios";
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import { useState } from "react";
 import { Formik } from 'formik';
@@ -83,13 +84,41 @@ const Data = () => {
       const handleChange = (event, newAlignment) => {
         setAlignment(newAlignment);
       };
-          
+      const [open, setOpen] = useState(false);
+      const handleClose = () => {
+        setOpen(false);
+      };
+      const handleToggle = () => {
+      setOpen(!open);
+    };
+
       function handleOnChange(value) {
           signform.phone=value
      }
       const signSubmit = (e)=>{
-        console.log(e);
-      }
+        const data={ 
+          "dob": e.dob+'',
+          "email": e.email+'',
+          "gender": e.gender+'',
+          "language": e.language+'',
+          "martial": e.martial+'',
+          "name": e.name+'',
+          "phone": e.phone+'',
+          "timeOfBirth": e.timeOfBirth+''
+        }
+          axios.post('https://cors-layer-library.herokuapp.com/khabar-backend.herokuapp.com/users',data)
+          .then(res=>{
+              console.log(res)
+          }
+          )
+          .catch(err=>{
+              console.log(err)
+          }
+          )
+        
+       
+    }
+      
 
   return (
     <div>
